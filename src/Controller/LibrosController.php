@@ -18,12 +18,10 @@ class LibrosController extends AbstractController
         $client = HttpClient::create();
         $autor = $request->get('autor');
         $año = $request->get('año');
-        $lenguaje = $request->get('lenguaje');
-        print_r($autor);
 
-        if($autor != '' or $año != '' or $lenguaje != ''){
+        if($autor != '' or $año != ''){
 
-            $url = "https://www.etnassoft.com/api/v1/get/?category=libros_programacion&book_author=$autor&publisher_date=$año&any_tags=[$lenguaje]";
+            $url = "https://www.etnassoft.com/api/v1/get/?book_author=$autor&publisher_date=$año";
             $content = $client->request('GET', $url);
             $cuerpo = $content->getContent();
             $decodificacion = json_decode($cuerpo);
@@ -33,7 +31,6 @@ class LibrosController extends AbstractController
             $content = $client->request('GET', 'https://www.etnassoft.com/api/v1/get/?category=libros_programacion');
             $cuerpo = $content->getContent();
             $decodificacion = json_decode($cuerpo);
-            // print_r($decodificacion);
         
         }
             
