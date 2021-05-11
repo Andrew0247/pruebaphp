@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filtros{% endblock %}
+
+{% block body %}
+<div class="Contenido">
+
+    <h1>Filtros</h1>
+    
+    <form action="{{ path('libros')}}"method="post">
+        Autor: <input type="text" name="autor" value=""/>
+        Año: <input type="text" name="año" value=""/>
+        Lenguaje: <input type="checkbox" name="lenguaje" value="html"/>Html
+                <input type="checkbox" name="lenguaje" value="css"/>Css
+                <input type="checkbox" name="lenguaje" value="javascript"/>Javascript
+        <input type="submit" value="Aplicar"/>
+    </form>
+
+</div>
+
+{% endblock %}

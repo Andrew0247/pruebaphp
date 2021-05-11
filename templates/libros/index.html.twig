@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Libros{% endblock %}
+
+{% block body %}
+<div class="titulo">
+    <h1>Libros</h1>
+    <a href="{{ path('filtros') }}">Filtros</a>
+</div>
+<div class="lista">
+    <h3>Lista</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Cant. pág.</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cont in contenido %}
+            <tr>
+                <th>{{ cont.title }}</th>
+                <td>{{ cont.content|length }}</td>
+                <td>{{ cont.author }}</td>
+                <td>{{ cont.pages }}</td>
+                <td><a href="{{ path('ver_libro', {id: cont.ID}) }}">Ver</a> <a href="">Agregar</a>
+                </td>
+            </tr>
+
+            {% endfor %}
+                
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

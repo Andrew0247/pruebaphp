@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ver Libro{% endblock %}
+
+{% block body %}
+<div class="Contenido">
+    <h1>Libros</h1>
+    <a href="#"><i class="fas fa-filter"></i></a>
+
+    {% for cont in contenido %}
+      <h3>{{ cont.title }}</h3>
+      <img src="{{ cont.thumbnail }}">
+      <div>
+        <p>Titulo: {{ cont.title }}</p>
+        <p>Autor: {{ cont.author }}</p>
+        <p>Descripción: {{ cont.content }}</p>
+        <p>Año: {{ cont.publisher_date }}</p>
+        <p>Idioma: {{ cont.language }}</p>
+        {% for cont2 in cont.categories %}
+          <p>Categorías: {{ cont2.name }}</p>
+        {% endfor %}
+      </div>
+      <div class="etiquetas">
+        {% for cont3 in cont.tags %}
+          <p>{{ cont3.name }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
